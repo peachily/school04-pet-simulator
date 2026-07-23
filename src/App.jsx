@@ -104,8 +104,8 @@ export default function App() {
   const sceneBackground =
     selectedOption?.background ??
     currentActivity?.background ??
-    "/assets/backgrounds/dog-place-home.png";
-  const petImage = selectedOption?.actionImage ?? "/assets/pets/dog.png";
+    "/assets/backgrounds/dog-place-home.webp";
+  const petImage = selectedOption?.actionImage ?? "/assets/pets/dog.webp";
 
   return (
     <main

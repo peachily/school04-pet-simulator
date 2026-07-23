@@ -1,0 +1,129 @@
+:root {
+  /* Font */
+  --font-family: "Galmuri11", "Pretendard", "Noto Sans KR", sans-serif;
+
+  /* Colors */
+  --color-text: #554b5f;
+  --color-text-soft: #8d8095;
+  --color-page: #f7edf5;
+  --color-pure-white: #fff;
+  --color-white: #fffdfb;
+  --color-pet-selected: #fff5f7;
+  --color-primary: #ff8fab;
+  --color-primary-dark: #ef7193;
+  --color-secondary: #8bd3c7;
+  --color-accent: #ffd166;
+  --color-lavender: #cdb4db;
+  --color-sky: #bde0fe;
+  --color-surface: rgba(255, 253, 251, 0.9);
+  --color-shadow: rgba(92, 72, 104, 0.16);
+  --color-heart-empty: #d9d1dc;
+  --color-achievement-text: #795270;
+  --color-achievement-crown: #f4b942;
+  --color-achievement-border: #fff3a8;
+  --color-achievement-start: #fffdf4;
+  --color-achievement-end: #ffdbea;
+  --color-achievement-glow: rgba(255, 245, 157, 0.75);
+  --color-achievement-ring: rgba(255, 255, 255, 0.65);
+
+  /* Backgrounds */
+  --background-home: linear-gradient(155deg, #fff1f5 0%, #eef8ff 55%, #f4eeff 100%);
+  --background-house: linear-gradient(180deg, #cdeeff 0 52%, #f8dfbd 52% 100%);
+  --background-feed: linear-gradient(180deg, #ffe7cb 0 52%, #e8c99a 52% 100%);
+  --background-play: linear-gradient(180deg, #dff7e7 0 52%, #bce0bd 52% 100%);
+  --background-walk: linear-gradient(180deg, #d9f2ff 0 50%, #b9dda8 50% 100%);
+
+  /* Sizing */
+  --radius-small: 14px;
+  --radius-medium: 22px;
+  --radius-large: 34px;
+  --radius-round: 999px;
+  --space-xs: 6px;
+  --space-sm: 10px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 36px;
+  --content-width: 520px;
+  --game-content-width: 1100px;
+  --pet-size: clamp(240px, 42vmin, 560px);
+  --action-button-height: clamp(64px, 8vh, 92px);
+  --choice-button-height: clamp(112px, 14vh, 150px);
+  --choice-image-width: clamp(88px, 10vw, 132px);
+  --choice-image-height: clamp(76px, 10vh, 110px);
+  --achievement-width: 430px;
+
+  /* Effects */
+  --shadow-soft: 0 10px 30px var(--color-shadow);
+  --shadow-button: 0 7px 0 rgba(105, 80, 116, 0.13);
+  --shadow-pet: 0 14px 12px rgba(83, 67, 54, 0.18);
+  --shadow-achievement:
+    0 0 0 8px var(--color-achievement-ring),
+    0 24px 70px rgba(104, 67, 91, 0.32);
+  --transition-fast: 160ms ease;
+  --transition-normal: 280ms ease;
+  --achievement-enter-duration: 650ms;
+}
+
+@font-face {
+  font-family: "Galmuri11";
+  src: url("/assets/fonts/Galmuri11.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Galmuri11";
+  src: url("/assets/fonts/Galmuri11-Bold.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 700 900;
+  font-display: swap;
+}
+
+.button {
+  min-height: 56px;
+  border: 0;
+  border-radius: var(--radius-medium);
+  padding: 12px 18px;
+  color: var(--color-text);
+  background: var(--color-white);
+  box-shadow: var(--shadow-button);
+  font: 700 1rem/1.2 var(--font-family);
+  cursor: pointer;
+  transition:
+    transform var(--transition-fast),
+    box-shadow var(--transition-fast),
+    filter var(--transition-fast);
+}
+
+.button:hover:not(:disabled) {
+  transform: translateY(-3px);
+  filter: brightness(1.02);
+}
+
+.button:active:not(:disabled) {
+  transform: translateY(3px);
+  box-shadow: 0 2px 0 rgba(105, 80, 116, 0.13);
+}
+
+.button:focus-visible {
+  outline: 4px solid rgba(255, 143, 171, 0.38);
+  outline-offset: 3px;
+}
+
+.button--primary {
+  color: #fff;
+  background: var(--color-primary);
+}
+
+.button--secondary {
+  background: var(--color-secondary);
+}
+
+.panel {
+  border: 2px solid rgba(255, 255, 255, 0.75);
+  border-radius: var(--radius-large);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-soft);
+  backdrop-filter: blur(10px);
+}

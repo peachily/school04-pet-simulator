@@ -1,0 +1,57 @@
+import AchievementCelebration from "../components/AchievementCelebration";
+import GameControls from "../components/GameControls";
+import GameHeader from "../components/GameHeader";
+import PetStage from "../components/PetStage";
+import RequestMessage from "../components/RequestMessage";
+import { usePetGame } from "../hooks/usePetGame";
+
+export default function PetGamePage({ pet, onExit }) {
+  const game = usePetGame(pet);
+  const background =
+    game.selectedOption?.background ??
+    game.currentActivity?.background ??
+    pet.homeBackground;
+  const petImage = game.selectedOption?.actionImage ?? pet.defaultImage;
+  const displayedPetImage =
+    game.currentActivity?.interaction === "place" && game.interactionMode === "placingToy"
+      ? pet.defaultImage
+      : petImage;
+  const message = game.reaction ?? <RequestMessage request={game.request} />;
+
+  return (
+    <main
+      className={`screen game-screen game-screen--${game.activity ?? "house"}`}
+      style={{ backgroundImage: `url("${background}")` }}
+    >
+      <GameHeader
+        hearts={game.hearts}
+        hideBack={game.interactionMode === "completed"}
+        onBack={game.activity ? game.returnHome : onExit}
+      />
+
+      <PetStage
+        reaction={message}
+        reactionKey={game.reactionKey}
+        petImage={displayedPetImage}
+        petName={pet.name}
+        isHappy={game.isHappy}
+        interactionType={game.currentActivity?.interaction}
+        interactionMode={game.interactionMode}
+        selectedOption={game.selectedOption}
+        position={game.stagePosition}
+        onPositionChange={game.setStagePosition}
+        onToyPlace={game.placeItem}
+      />
+
+      {game.showAchievement && (
+        <AchievementCelebration onDismiss={game.clearAchievement} />
+      )}
+
+      <GameControls pet={pet} game={game} />
+
+      {game.interactionMode === "walking" && (
+        <div className="walk-timer" aria-live="polite">{game.secondsLeft}</div>
+      )}
+    </main>
+  );
+}

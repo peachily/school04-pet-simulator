@@ -1,12 +1,15 @@
+import { useEffect } from "react";
 import AchievementCelebration from "../components/AchievementCelebration";
 import GameControls from "../components/GameControls";
 import GameHeader from "../components/GameHeader";
 import PetStage from "../components/PetStage";
 import RequestMessage from "../components/RequestMessage";
 import { usePetGame } from "../hooks/usePetGame";
+import { getRequestText, speakText, stopSpeaking } from "../utils/speech";
 
 export default function PetGamePage({ pet, onExit }) {
   const game = usePetGame(pet);
+  const requestText = getRequestText(game.request);
   const background =
     game.selectedOption?.background ??
     game.currentActivity?.background ??
@@ -16,7 +19,14 @@ export default function PetGamePage({ pet, onExit }) {
     game.currentActivity?.interaction === "place" && game.interactionMode === "placingToy"
       ? pet.defaultImage
       : petImage;
-  const message = game.reaction ?? <RequestMessage request={game.request} />;
+  const message = game.reaction ?? (
+    <RequestMessage request={game.request} onSpeak={() => speakText(requestText)} />
+  );
+
+  useEffect(() => {
+    if (!game.reaction) speakText(requestText);
+    return stopSpeaking;
+  }, [game.reaction, requestText]);
 
   return (
     <main

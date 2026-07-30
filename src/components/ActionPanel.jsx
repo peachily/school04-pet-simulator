@@ -1,3 +1,5 @@
+import { speakText } from "../utils/speech";
+
 export default function ActionPanel({ label, options, isChoice, onSelect }) {
   return (
     <nav className="action-panel panel" aria-label={label}>
@@ -8,6 +10,7 @@ export default function ActionPanel({ label, options, isChoice, onSelect }) {
             className={`button action-button ${isChoice ? "action-button--choice" : ""}`}
             key={item.id}
             onClick={() => onSelect(item)}
+            onMouseEnter={() => speakText(item.name)}
           >
             {item.image && <img className="action-button__image" src={item.image} alt="" />}
             <span>{item.name}</span>

@@ -47,6 +47,7 @@
   --choice-button-height: clamp(112px, 14vh, 150px);
   --choice-image-width: clamp(88px, 10vw, 132px);
   --choice-image-height: clamp(76px, 10vh, 110px);
+  --request-speak-button-size: 36px;
   --achievement-width: 430px;
 
   --shadow-soft: 0 10px 30px var(--color-shadow);

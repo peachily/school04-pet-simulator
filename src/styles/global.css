@@ -307,6 +307,36 @@ h1 {
   color: var(--color-primary-dark);
 }
 
+.request-message {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.request-speak-button {
+  display: grid;
+  width: var(--request-speak-button-size);
+  height: var(--request-speak-button-size);
+  flex: 0 0 auto;
+  place-items: center;
+  border: 0;
+  border-radius: var(--radius-round);
+  padding: 0;
+  background: var(--color-page);
+  font: inherit;
+  cursor: pointer;
+  transition: transform var(--transition-fast);
+}
+
+.request-speak-button:hover {
+  transform: scale(1.08);
+}
+
+.request-speak-button:focus-visible {
+  outline: 3px solid rgba(255, 143, 171, 0.38);
+  outline-offset: 2px;
+}
+
 .floating-hearts span {
   position: absolute;
   left: 50%;

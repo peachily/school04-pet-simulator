@@ -285,6 +285,17 @@ h1 {
   filter: drop-shadow(var(--shadow-pet));
 }
 
+.hand-cursor {
+  position: absolute;
+  z-index: 4;
+  width: var(--interaction-tool-size);
+  height: var(--interaction-tool-size);
+  object-fit: contain;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  filter: drop-shadow(var(--shadow-pet));
+}
+
 .speech-bubble {
   position: absolute;
   z-index: 2;
@@ -403,6 +414,11 @@ h1 {
   height: var(--choice-image-height);
   flex: 0 0 auto;
   object-fit: contain;
+}
+
+.action-button:not(.action-button--choice) .action-button__image {
+  width: var(--action-menu-image-width);
+  height: var(--action-menu-image-height);
 }
 
 .home-return-button {

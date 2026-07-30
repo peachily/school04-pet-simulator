@@ -9,13 +9,14 @@ export default function PetStage({
   interactionType,
   interactionMode,
   selectedOption,
+  toolImage,
   position,
   onPositionChange,
   onToyPlace,
 }) {
   const [cursorPosition, setCursorPosition] = useState({ x: 50, y: 50 });
   const [isDragging, setIsDragging] = useState(false);
-  const isInteractive = interactionMode === "placingToy" || interactionMode === "walking";
+  const isInteractive = ["placingToy", "walking", "petting"].includes(interactionMode);
   const isPositioned =
     (interactionType === "place" && ["playing", "completed"].includes(interactionMode)) ||
     (interactionType === "drag-timer" && ["walking", "completed"].includes(interactionMode));
@@ -32,12 +33,20 @@ export default function PetStage({
     const nextPosition = getPointerPosition(event);
     if (interactionMode === "placingToy") setCursorPosition(nextPosition);
     if (interactionMode === "walking" && isDragging) onPositionChange(nextPosition);
+    if (interactionMode === "petting" && (event.pointerType === "mouse" || isDragging)) {
+      onPositionChange(nextPosition);
+    }
   };
 
   const handlePointerDown = (event) => {
     const nextPosition = getPointerPosition(event);
     if (interactionMode === "placingToy") onToyPlace(nextPosition);
     if (interactionMode === "walking") {
+      event.currentTarget.setPointerCapture(event.pointerId);
+      setIsDragging(true);
+      onPositionChange(nextPosition);
+    }
+    if (interactionMode === "petting") {
       event.currentTarget.setPointerCapture(event.pointerId);
       setIsDragging(true);
       onPositionChange(nextPosition);
@@ -71,6 +80,14 @@ export default function PetStage({
           src={selectedOption.image}
           alt=""
           style={{ left: `${cursorPosition.x}%`, top: `${cursorPosition.y}%` }}
+        />
+      )}
+      {interactionMode === "petting" && (
+        <img
+          className="hand-cursor"
+          src={toolImage}
+          alt=""
+          style={{ left: `${position.x}%`, top: `${position.y}%` }}
         />
       )}
       {isHappy && (

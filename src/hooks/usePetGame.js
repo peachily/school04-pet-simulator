@@ -62,6 +62,23 @@ export function usePetGame(pet) {
     setActivity(activityId);
     setInteractionMode(null);
     setSelectedOption(null);
+
+    const nextActivity = pet.activities[activityId];
+    if (nextActivity.interaction === "pet-timer") {
+      setInteractionMode("petting");
+      setStagePosition({ x: 50, y: 50 });
+      setSecondsLeft(nextActivity.duration);
+      setReaction(nextActivity.instruction);
+
+      const countdown = setInterval(() => {
+        setSecondsLeft((current) => Math.max(current - 1, 0));
+      }, 1000);
+      const finishActivity = setTimeout(() => {
+        clearInterval(countdown);
+        completeRequest({ reaction: nextActivity.reaction });
+      }, nextActivity.duration * 1000);
+      activityTimers.current = [countdown, finishActivity];
+    }
   };
 
   const completeRequest = (option) => {

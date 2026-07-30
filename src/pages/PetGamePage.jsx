@@ -48,6 +48,7 @@ export default function PetGamePage({ pet, onExit }) {
         interactionType={game.currentActivity?.interaction}
         interactionMode={game.interactionMode}
         selectedOption={game.selectedOption}
+        toolImage={game.currentActivity?.toolImage}
         position={game.stagePosition}
         onPositionChange={game.setStagePosition}
         onToyPlace={game.placeItem}
@@ -59,7 +60,7 @@ export default function PetGamePage({ pet, onExit }) {
 
       <GameControls pet={pet} game={game} />
 
-      {game.interactionMode === "walking" && (
+      {["walking", "petting"].includes(game.interactionMode) && (
         <div className="walk-timer" aria-live="polite">{game.secondsLeft}</div>
       )}
     </main>

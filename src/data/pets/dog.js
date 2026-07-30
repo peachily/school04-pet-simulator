@@ -1,6 +1,11 @@
-import { mainActions } from "../actions";
-
 const dogAsset = (path) => `/assets/animals/dog/${path}`;
+
+const dogActions = [
+  { id: "feed", name: "먹이주기", image: dogAsset("menu/feed.webp") },
+  { id: "play", name: "놀아주기", image: dogAsset("menu/play.webp") },
+  { id: "walk", name: "산책하기", image: dogAsset("menu/walk.webp") },
+  { id: "petting", name: "쓰다듬기", image: dogAsset("menu/petting.webp") },
+];
 
 const activities = {
   feed: {
@@ -114,6 +119,13 @@ const activities = {
       },
     ],
   },
+  petting: {
+    interaction: "pet-timer",
+    duration: 10,
+    instruction: "손을 움직여 강아지를 쓰다듬어 주세요!",
+    toolImage: dogAsset("tools/hand.webp"),
+    reaction: "쓰다듬어 줘서 기분이 정말 좋아요!",
+  },
 };
 
 const requests = [
@@ -129,6 +141,7 @@ const requests = [
   { activityId: "walk", optionId: "park", before: "지금은 ", highlight: "공원", after: "에 가고 싶어요." },
   { activityId: "walk", optionId: "river", before: "지금은 ", highlight: "하천", after: "에 가고 싶어요." },
   { activityId: "walk", optionId: "forest", before: "지금은 ", highlight: "숲길", after: "에 가고 싶어요." },
+  { activityId: "petting", optionId: null, before: "지금은 ", highlight: "쓰다듬어", after: " 주세요." },
 ];
 
 export const dog = {
@@ -138,7 +151,7 @@ export const dog = {
   defaultImage: dogAsset("pet.webp"),
   homeBackground: dogAsset("backgrounds/place-home.webp"),
   available: true,
-  actions: mainActions,
+  actions: dogActions,
   activities,
   requests,
 };

@@ -50,6 +50,7 @@
   --choice-image-width: clamp(88px, 10vw, 132px);
   --choice-image-height: clamp(76px, 10vh, 110px);
   --request-speak-button-size: 36px;
+  --action-speak-button-size: 34px;
   --interaction-tool-size: clamp(110px, 15vw, 180px);
   --achievement-width: 430px;
 

@@ -132,7 +132,7 @@ const requests = [
   { activityId: "feed", optionId: "water", before: "지금은 ", highlight: "목이 말라요", after: "." },
   { activityId: "feed", optionId: "food", before: "지금은 ", highlight: "배가 고파요", after: "." },
   { activityId: "feed", optionId: "snack", before: "지금은 ", highlight: "간식", after: "이 먹고 싶어요." },
-  { activityId: "feed", optionId: "medicine", before: "지금은 ", highlight: "약", after: "을 먹고 싶어요." },
+  { activityId: "feed", optionId: "medicine", before: "너무 아파요. ", highlight: "약", after: "이 필요해요." },
   { activityId: "play", optionId: "rope", before: "지금은 ", highlight: "로프", after: " 가지고 놀래요." },
   { activityId: "play", optionId: "ball", before: "지금은 ", highlight: "공", after: " 가지고 놀래요." },
   { activityId: "play", optionId: "squeaky", before: "지금은 ", highlight: "삑삑이", after: " 가지고 놀래요." },

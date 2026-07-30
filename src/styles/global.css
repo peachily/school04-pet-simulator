@@ -458,6 +458,15 @@ h1 {
   height: var(--action-menu-image-height);
 }
 
+.action-button:not(.action-button--choice) {
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.action-button:not(.action-button--choice) span {
+  white-space: nowrap;
+}
+
 .home-return-button {
   z-index: 3;
   width: min(100%, var(--game-content-width));

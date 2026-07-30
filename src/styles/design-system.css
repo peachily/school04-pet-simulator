@@ -44,8 +44,8 @@
   --game-content-width: 1100px;
   --pet-size: clamp(240px, 42vmin, 560px);
   --action-button-height: clamp(64px, 8vh, 92px);
-  --action-menu-image-width: clamp(88px, 9vw, 136px);
-  --action-menu-image-height: clamp(64px, 8vh, 94px);
+  --action-menu-image-width: clamp(78px, 8vw, 112px);
+  --action-menu-image-height: clamp(56px, 7vh, 78px);
   --choice-button-height: clamp(112px, 14vh, 150px);
   --choice-image-width: clamp(88px, 10vw, 132px);
   --choice-image-height: clamp(76px, 10vh, 110px);
